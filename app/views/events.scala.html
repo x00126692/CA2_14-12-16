@@ -1,0 +1,35 @@
+@(user: models.users.User)
+
+@main("events",user){
+
+    <header>
+        <div class="events">
+        <hr>
+                
+                <hr>
+                <h1>UPCOMING EVENTS</h1>
+                <h3>Dec 10</h3>
+                <img src="@routes.Assets.versioned("/img/imgevents/206.png")">
+                <br>
+                <a href="" class="btn btn-primary btn-xl page-scroll">UFC 206 Fight Card</a>
+                <hr>
+                <br>
+                <h3>Dec 30</h3>
+                <img src="@routes.Assets.versioned("img/imgevents/207.png")">
+                <br>
+                <a href="" class="btn btn-primary btn-xl page-scroll">UFC 207 Fight Card</a>
+                <hr>
+                <br>
+    </div>
+            <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>UFC 2016</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+    </header>
+
+
+}

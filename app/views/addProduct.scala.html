@@ -1,0 +1,25 @@
+@import helper._
+
+@(addProductForm: play.data.Form[models.Product], user:models.users.User)
+
+@main("Add Product",user) {
+<h3> add a new product</h3>
+
+
+	@form(action = routes.HomeController.addProductSubmit(), 'class -> "form-hotizontal", 'role->"form"){
+@inputText(addProductForm("name"), '_label -> "Name", 'class -> "form-control")
+@inputText(addProductForm("description"), '_label -> "Description", 'class -> "form-control")
+@inputText(addProductForm("price"), '_label -> "Price", 'class -> "form-control")
+
+@inputText(addProductForm("id"), '_label -> "", 'hidden -> "hidden")
+
+
+<div class="actions">
+<input type="submit" value="add Product" class-"btn btn-primary">
+<a href="@routes.HomeController.index()"
+<button class ="btn btn-warning">Cancel</button>
+</a>
+</div>
+}
+
+}

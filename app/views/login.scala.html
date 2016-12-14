@@ -1,0 +1,43 @@
+@(loginForm: Form[models.users.Login])
+
+@import helper._
+
+@* Pass page title and content {html between braces} to the main view *@
+@main("Login"){
+	<!-- HTML content for the index -->
+	<div class="col-xs-4">
+	<h3>Sign In</h3>
+	<!-- Display login errors if they exist -->
+        @if(loginForm.hasGlobalErrors){
+	   <p class="alert alert-warning">
+	   @loginForm.globalError.message
+	   </p>
+	}
+
+	@if(flash.containsKey("error")){
+	   <div class="alert alert-warning">
+	   @flash.get("loginRequired")
+	   </div>
+	}
+	<!-- The login form -->
+	@helper.form(action = controllers.routes.LoginController.loginSubmit()){
+	   <div class ="form-group">
+		@inputText(loginForm("email"), '_label -> "",
+		'class -> "form-control input-xs", 'placeholder -> "Email")
+	   </div>
+		<div class="form group">
+		@inputPassword(loginForm("password"), '_label -> "",
+		'class -> "form-control input-xs", 'placeholder -> "Password")
+	   </div>
+	   <!-- Add a submit button -->
+	   <div class="form-group">
+		<input type="submit" value="Sign In" class="btn btn-primary">
+	   </div>
+
+	} @* Endof Form *@
+    </div>
+
+}
+
+
+

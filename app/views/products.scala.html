@@ -1,0 +1,67 @@
+@(products: List[models.Product])
+
+@main("Products") {
+
+<div class="row">
+   <div class="col-sm-2">
+    <div class="well">
+      <h4>Store</h4>
+    </div>
+</div>
+<div class="col-sm-10">
+@if(flash.containsKey("success")) {
+ <div class="alert alert-success">
+@flash.get("success")
+</div>
+}
+  <table class="table table-bordered table-hover table-condensed">
+       <thead>
+         <tr>
+            <th>ID</th>  
+            <th>Name</th>
+            <th>Description</th>  
+            <th>Price</th>
+         </tr>
+        <thead>
+        <tbody>
+                
+                            <tr>
+                                @for(p <- products) {
+                                <div>
+                                <td>@p.getId</td>
+                                <td>@p.getName</td>
+                                <td>@p.getDescription</td>
+                                <td>&euro; @("%.2f".format(p.getPrice))</td>
+                                <td>
+                                  <a href="@routes.HomeController.updateProduct(p.getId)" class="btn-xs btn-danger">
+                                   <span class="glyphicon glyphicon-pencil"></span>
+                                <td>
+                                  <a href="@routes.HomeController.deleteProduct(p.getId)" onclick="return confirmDel();">
+                                   <span class="glyphicon glyphicon-trash"></span>
+                                  </a>
+            			</td>
+                                </tr>
+                                }
+                            </tr>
+         </thead>
+         </tbody>
+    </table>
+
+
+<p>
+<a href="@routes.HomeController.addProduct()">
+<button class="btn btn-primary">Add a product</button>
+</a>
+</p>
+
+</div>
+</div>
+<script>
+function confirmDel() {
+return confirm('Are you sure?');
+}
+</script>
+
+}
+
+

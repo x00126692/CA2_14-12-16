@@ -1,0 +1,83 @@
+@(title:String, user: models.users.User)(content: Html)
+
+<!DOCTYPE html>
+<html lang="em">
+<head>
+
+<title>@title</title>
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")" >
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/font-awesome.min.css")">
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'>
+    <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'>
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/magnific-popup.css")">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/creative.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/shop-homepage.css")"> 
+
+
+    </head>
+    <body>
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <li @if(title == "index"){class="active"}>
+                <a class="navbar-brand page-scroll" href=@routes.HomeController.index()>UFC</a>
+                </li>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li @if(title == "news"){class="active"}><a href=@routes.HomeController.news()>News</a></li>
+                    <li @if(title == "events"){class="active"}><a href=@routes.HomeController.events()>Upcoming Events</a></li>
+                    <li @if(title == "divisions"){class="active"}><a href=@routes.HomeController.divisions()>Divisions</a></li>
+                    <li @if(title == "gallery"){class="active"}><a href=@routes.HomeController.gallery()>Gallery</a></li>
+                    <li @if(title == "ranking"){class="active"}><a href=@routes.HomeController.ranking()>Rankings</a></li>
+                    <li @if(title == "products"){class="active"}><a href=@routes.HomeController.products()>Store</a></li> 
+                   
+                    <li @if(title == "Login"){class="active"}>
+@if(user !=null) {
+<a href=@routes.LoginController.logout()>Logout @user.getName()</a>
+} else {
+<a href=@routes.LoginController.login()>Login</a>
+}
+                </li></ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    @content
+    </body>
+
+        <!-- jQuery -->
+    <script src="@routes.Assets.versioned("js/jquery.js")" type="text/javascript"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="@routes.Assets.versioned("js/bootstrap.min.js")" type="text/javascript"></script>
+
+  
+
+    <!-- jQuery -->
+    <script src="@routes.Assets.versioned("vendor/jquery/jquery.min.js")" type="text/javascript"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="@routes.Assets.versioned("vendor/bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="@routes.Assets.versioned("vendor/scrollreveal/scrollreveal.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("vendor/magnific-popup/jquery.magnific-popup.min.js")" type="text/javascript"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="@routes.Assets.versioned("js/creative.min.js")" type="text/javascript"></script>
+    </html>
